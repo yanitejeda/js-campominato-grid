@@ -90,4 +90,5 @@ function generateGrid(cellNumber){
 }
 
 function cliccoSingolaCella(){
-  this.classList.toggle('clickup'); //aggiungo la classe che da il colore alle singole celle
+  this.classList.toggle('clickup'); //aggiungo la classe che da il colore alle singole  celle
+}

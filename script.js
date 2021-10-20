@@ -41,7 +41,7 @@ btnPlay.addEventListener("click", function () {
     console.log(`dovranno essere create ${totalCell} celle.`) //stampo il numero di celle da creare
 });
 
-
+//in base alla scelta adella difficolta genera un numero differente di celle, e qui calcolo il numero di celle di cui ho bisogno
 function getCellNum(level){
   let result;
 
@@ -67,22 +67,27 @@ function getCellNum(level){
 
 function generateGrid(cellNumber){
 
-//cosi rigenero sempre il contenuto del box container
+//cosi rigenero sempre il contenuto del box container e nonn mi si aggiungono altre a quello di partenza
   boxContainer.innerHTML = '';
-  
+
 //per calcolare larghezza e altezza delle celle
   const perRowCells = Math.sqrt(cellNumber);
   const cellSize = 100 / perRowCells;
 
   //creo le celle
   for (let i = 0; i < cellNumber; i++) {
+      const singleCell = document.createElement('div');  //creo il div contenitore
+      singleCell.classList.add('cella');                //metto la classe che crea la singola cella
+      singleCell.style.width = cellSize + '%';         //do la larghezza alla cella
+      singleCell.style.height = cellSize + '%';       //do la l'altezza alla cella
 
-    //creo una singola cella
-   const cell = `<div class='cella' style='width:${cellSize}%; height ${cellSize}% '></div>`;
 
-   //aggiungo la cella al contenitore
-   boxContainer.innerHTML += cell;
-    
+      singleCell.addEventListener('click', cliccoSingolaCella)
+
+        boxContainer.append(singleCell);//inserisco il contenuto all'interno l'html
   }
 
 }
+
+function cliccoSingolaCella(){
+  this.classList.toggle('clickup'); //aggiungo la classe che da il colore alle singole celle
